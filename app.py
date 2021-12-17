@@ -92,7 +92,7 @@ def get_sample():
 
 @app.route("/incrementp1")
 @cross_origin()
-def incrementQ1():
+def incrementP1():
     q1 = request.args.get('q1')
     q2 = request.args.get('q2')
 
@@ -106,7 +106,7 @@ def incrementQ1():
     
 @app.route("/incrementp2")
 @cross_origin()
-def incrementQ1():
+def incrementP2():
     q1 = request.args.get('q1')
     q2 = request.args.get('q2')
     q3 = request.args.get('q3')
