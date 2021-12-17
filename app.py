@@ -1,5 +1,6 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS, cross_origin
+import pandas as pd
 app = Flask(__name__)
 cors = CORS(app)
 
@@ -85,3 +86,34 @@ def get_sample():
         pickle.dump(visits, f)
 
     return json.dumps(out)
+
+@app.route("/incrementp1")
+@cross_origin()
+def incrementQ1():
+    q1 = request.args.get('q1')
+    q2 = request.args.get('q2')
+
+    df = pd.read_csv('results.csv')
+    df.loc[df["Answer"]==q1,"Value"] += 1
+    df.loc[df["Answer"]==q2,"Value"] += 1
+
+    df.to_csv('results.csv', index=False)
+
+    return "Done"
+    
+@app.route("/incrementp2")
+@cross_origin()
+def incrementQ1():
+    q1 = request.args.get('q1')
+    q2 = request.args.get('q2')
+    q3 = request.args.get('q3')
+
+    df = pd.read_csv('results.csv')
+    df.loc[df["Answer"]==q1,"Value"] += 1
+    df.loc[df["Answer"]==q2,"Value"] += 1
+    df.loc[df["Answer"]==q3,"Value"] += 1
+
+    df.to_csv('results.csv', index=False)
+
+    return "Done"
+    
