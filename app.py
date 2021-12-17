@@ -67,7 +67,10 @@ def get_sample():
     r = []
 
     for i in range(40):
-        r.append(int(sample(w)))
+        foo = int(sample(w))
+        if not foo % 2 == 0:
+            foo -= 1
+        r.append(foo)
 
 
     out = {'visits': r}
