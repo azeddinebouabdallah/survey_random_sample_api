@@ -97,8 +97,8 @@ def incrementP1():
     q2 = request.args.get('q2')
 
     df = pd.read_csv('results.csv')
-    df.loc[df["Answer"]==q1,"Value"] += 1
-    df.loc[df["Answer"]==q2,"Value"] += 1
+    df.loc[q1,"Value"] += 1
+    df.loc[q2,"Value"] += 1
 
     df.to_csv('results.csv', index=False)
 
@@ -112,9 +112,9 @@ def incrementP2():
     q3 = request.args.get('q3')
 
     df = pd.read_csv('results.csv')
-    df.loc[df["Answer"]==q1,"Value"] += 1
-    df.loc[df["Answer"]==q2,"Value"] += 1
-    df.loc[df["Answer"]==q3,"Value"] += 1
+    df.loc[q1,"Value"] += 1
+    df.loc[q2,"Value"] += 1
+    df.loc[q3,"Value"] += 1
 
     df.to_csv('results.csv', index=False)
 
