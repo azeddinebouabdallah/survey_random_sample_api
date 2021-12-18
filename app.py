@@ -40,6 +40,17 @@ def sample(w):
 def helloWorld():
   return "Hello, cross-origin-world!"
 
+@app.route("/reset")
+@cross_origin()
+def reset():
+    with open('visits.pkl', 'rb') as f:
+        visits = pickle.load(f)
+    visits=np.zeros(24192)
+    
+    with open('visits.pkl', 'wb') as f:
+        pickle.dump(visits, f)
+
+    return "reset"
 
 
 @app.route("/weights")
@@ -97,8 +108,8 @@ def incrementP1():
     q2 = request.args.get('q2')
 
     df = pd.read_csv('results.csv')
-    df.loc[q1,"Value"] += 1
-    df.loc[q2,"Value"] += 1
+    df.loc[int(q1),"Value"] += 1
+    df.loc[int(q2),"Value"] += 1
 
     df.to_csv('results.csv', index=False)
 
@@ -112,9 +123,9 @@ def incrementP2():
     q3 = request.args.get('q3')
 
     df = pd.read_csv('results.csv')
-    df.loc[q1,"Value"] += 1
-    df.loc[q2,"Value"] += 1
-    df.loc[q3,"Value"] += 1
+    df.loc[int(q1),"Value"] += 1
+    df.loc[int(q2),"Value"] += 1
+    df.loc[int(q3),"Value"] += 1
 
     df.to_csv('results.csv', index=False)
 
