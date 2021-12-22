@@ -110,11 +110,11 @@ def incrementP1():
     df = pd.read_csv('results.csv')
     df2 = pd.read_csv('results2.csv')
 
-    #try:
-    df2.iloc[imId, q1+1] += 1
-    df2.iloc[imId, q2+1] += 1
-    #except:
-        #print("error")
+    try:
+        df2.iloc[int(imId), int(q1)+1] += 1
+        df2.iloc[int(imId), int(q2)+1] += 1
+    except:
+        print("error")
     df.loc[int(q1),"Value"] += 1
     df.loc[int(q2),"Value"] += 1
 
@@ -134,9 +134,9 @@ def incrementP2():
     df2 = pd.read_csv('results2.csv')
 
     try:
-        df2.iloc[imId, q1+1] += 1
-        df2.iloc[imId, q2+1] += 1
-        df2.iloc[imId, q3+1] += 1
+        df2.iloc[int(imId), int(q1)+1] += 1
+        df2.iloc[int(imId), int(q2)+1] += 1
+        df2.iloc[int(imId), int(q3)+1] += 1
     except:
         print("error")
 
