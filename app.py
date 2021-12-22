@@ -119,6 +119,7 @@ def incrementP1():
     df.loc[int(q2),"Value"] += 1
 
     df.to_csv('results.csv', index=False)
+    df2.to_csv('results2.csv', index=False)
 
     return "Done"
     
@@ -145,6 +146,7 @@ def incrementP2():
     df.loc[int(q3),"Value"] += 1
 
     df.to_csv('results.csv', index=False)
+    df2.to_csv('results2.csv', index=False)
 
     return "Done"
 
