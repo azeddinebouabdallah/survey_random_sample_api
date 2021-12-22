@@ -40,7 +40,7 @@ def sample(w):
 def helloWorld():
   return "Hello, cross-origin-world!"
 
-@app.route("/reset")
+@app.route("/api/reset")
 @cross_origin()
 def reset():
     with open('visits.pkl', 'rb') as f:
@@ -53,7 +53,7 @@ def reset():
     return "reset"
 
 
-@app.route("/weights")
+@app.route("/api/weights")
 @cross_origin()
 def get_weights():
     with open('visits.pkl', 'rb') as f:
@@ -69,7 +69,7 @@ def get_weights():
 
 
 
-@app.route("/sample")
+@app.route("/api/sample")
 @cross_origin()
 def get_sample():
     with open('weights.pkl', 'rb') as f:
@@ -101,7 +101,7 @@ def get_sample():
 
     return json.dumps(out)
 
-@app.route("/incrementp1")
+@app.route("/api/incrementp1")
 @cross_origin()
 def incrementP1():
     q1 = request.args.get('q1')
@@ -122,7 +122,7 @@ def incrementP1():
 
     return "Done"
     
-@app.route("/incrementp2")
+@app.route("/api/incrementp2")
 @cross_origin()
 def incrementP2():
     q1 = request.args.get('q1')
@@ -148,7 +148,7 @@ def incrementP2():
 
     return "Done"
 
-@app.route("/useremail")
+@app.route("/api/useremail")
 @cross_origin()
 def userEmail():
     email = request.args.get('email')
