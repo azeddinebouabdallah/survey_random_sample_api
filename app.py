@@ -106,8 +106,15 @@ def get_sample():
 def incrementP1():
     q1 = request.args.get('q1')
     q2 = request.args.get('q2')
-
+    imId = request.args.get('imageId')
     df = pd.read_csv('results.csv')
+    df2 = pd.read_csv('results2.csv')
+
+    try:
+        df2.iloc[imId, q1] += 1
+        df2.iloc[imId, q2] += 1
+    except:
+        print("error")
     df.loc[int(q1),"Value"] += 1
     df.loc[int(q2),"Value"] += 1
 
@@ -121,13 +128,38 @@ def incrementP2():
     q1 = request.args.get('q1')
     q2 = request.args.get('q2')
     q3 = request.args.get('q3')
+    imId = request.args.get('imageId')
 
     df = pd.read_csv('results.csv')
+    df2 = pd.read_csv('results2.csv')
+
+    try:
+        df2.iloc[imId, q1] += 1
+        df2.iloc[imId, q2] += 1
+        df2.iloc[imId, q3] += 1
+    except:
+        print("error")
+
     df.loc[int(q1),"Value"] += 1
     df.loc[int(q2),"Value"] += 1
     df.loc[int(q3),"Value"] += 1
 
     df.to_csv('results.csv', index=False)
+
+    return "Done"
+
+@app.route("/useremail")
+@cross_origin()
+def userEmail():
+    email = request.args.get('email')
+    
+    df = pd.read_csv("emails.csv")
+    if (email == "anonymous"):
+        email = request.remote_addr
+    
+    df = df.append([email])
+
+    df.to_csv('emails.csv', index=False)
 
     return "Done"
     
